@@ -1,10 +1,13 @@
 {
-    "name": "vscode-languageserver-xml-extension",
-    "displayName": "XML Language Server",
-    "description": "Visual Studio Code XML Language Server Implementation",
-    "version": "0.1.0.pre",
+    "name": "vscode-apps-languageserver-xml-extension",
+    "displayName": "Apps XML Language Server",
+    "description": "Visual Studio Code Apps XML Language Server Implementation",
+    "version": "0.1.0-pre.1",
     "license": "MIT",
-    "publisher": "Gabriel Parelli Francischini",
+    "publisher": "Spring Global",
+    "author": {
+        "name": "Gabriel Parelli Francischini"
+    },
     "engines": {
         "vscode": "^1.5.0"
     },

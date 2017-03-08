@@ -1,8 +1,4 @@
-﻿using LanguageServerProtocol.Hosting.Contracts.Document;
-using LanguageServerProtocol.Hosting.Types;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using LanguageServerProtocol.Contracts.Document.Types;
 using XmlCompletionEngine.Types;
 
 namespace XmlLanguageServerConsole.LanguageService

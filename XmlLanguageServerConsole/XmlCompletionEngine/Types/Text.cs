@@ -36,16 +36,22 @@ namespace XmlCompletionEngine.Types
             set;
         }
 
+        public Uri BaseUri
+        {
+            get;set;
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="text"></param>
         /// <param name="filePath"></param>
-        public Text(string text, Uri uri)
+        public Text(string text, Uri uri, Uri baseUri)
         {
             this.Uri = uri;
             this.Content = text;
             this.ContentLength = text.Length;
+            this.BaseUri = baseUri;
         }
 
 

@@ -62,9 +62,8 @@
     <Compile Include="Types\XmlObjectLocation.cs" />
     <Compile Include="Types\XmlObjectLocationCollection.cs" />
     <Compile Include="Types\XmlSchemaCompletionCollection.cs" />
+    <Compile Include="Utility\PathUtils.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utility\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,13 +1,12 @@
 ﻿using HostingAdapter.Hosting;
 using HostingAdapter.Utility;
+using LanguageServerProtocol.Contracts.Document.Types;
 using LanguageServerProtocol.Hosting.Contracts.Document;
 using LanguageServerProtocol.Hosting.Contracts.General;
 using LanguageServerProtocol.Hosting.Protocol;
-using LanguageServerProtocol.Hosting.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using XmlCompletionEngine;
@@ -166,7 +165,7 @@ namespace XmlLanguageServerConsole.LanguageService
                     {
                         Detail = null, //"This is the documentation. Not Implemented",
                         Documentation = xmlCompletionItem.Documentation,
-                        Kind = CompletionItem.CompletionItemKind.Text,
+                        Kind = CompletionItemKind.Text,
                         Label = xmlCompletionItem.Text,
                     });
                 }
@@ -198,12 +197,12 @@ namespace XmlLanguageServerConsole.LanguageService
                     {
                         Range = new Range()
                         {
-                            Start = new LanguageServerProtocol.Hosting.Types.Position()
+                            Start = new Position()
                             {
                                 Line = xmlObjectLocation.LineNumber - 1,
                                 Character = xmlObjectLocation.LinePosition - 1
                             },
-                            End = new LanguageServerProtocol.Hosting.Types.Position()
+                            End = new Position()
                             {
                                 Line = xmlObjectLocation.LineNumber - 1,
                                 Character = xmlObjectLocation.LinePosition - 1
@@ -227,7 +226,7 @@ namespace XmlLanguageServerConsole.LanguageService
             ScriptFile scriptFile = WorkspaceService.Instance.Workspace.GetFile(
                 uri);
 
-            Text text = new Text(scriptFile.Contents, uri);
+            Text text = new Text(scriptFile.Contents, uri, new Uri(WorkspaceService.Instance.Workspace.WorkspacePath));
             return text;
             //return null;
         }

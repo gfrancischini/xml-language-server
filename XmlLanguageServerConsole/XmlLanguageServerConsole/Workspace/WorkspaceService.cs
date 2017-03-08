@@ -1,8 +1,8 @@
 ﻿using HostingAdapter.Hosting;
 using HostingAdapter.Utility;
-using LanguageServerProtocol.Hosting.Contracts.Document;
+using LanguageServerProtocol.Contracts.Document;
+using LanguageServerProtocol.Contracts.Document.Types;
 using LanguageServerProtocol.Hosting.Protocol;
-using LanguageServerProtocol.Hosting.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,6 +101,8 @@ namespace XmlLanguageServerConsole.Workspace
 
         public void InitializeService(LanguageServiceHost serviceHost)
         {
+            Logger.Write(LogLevel.Normal, "InitializeService");
+
             // Create a workspace that will handle state for the session
             Workspace = new Workspace();
 
@@ -183,6 +185,7 @@ namespace XmlLanguageServerConsole.Workspace
             DidChangeTextDocumentParams textChangeParams,
             EventContext eventContext)
         {
+            Logger.Write(LogLevel.Verbose, "HandleDidChangeTextDocumentNotification");
             try
             {
                 StringBuilder msg = new StringBuilder();
