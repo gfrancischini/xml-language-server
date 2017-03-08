@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using RxpInterface;
 using XmlValidation.FileTypes;
 using System.Xml.Schema;
+using System.Xml;
 
 namespace XmlValidation
 {
@@ -115,6 +116,21 @@ namespace XmlValidation
 
                 return false;
             }
+            catch (XmlException ex)
+            {
+                this.Errors.Add(new XmlError()
+                {
+                    FilePath = xmlFile.FilePath,
+                    Line = ex.LineNumber - 1,
+                    Column = ex.LinePosition - 1,
+                    Message = DiagnosticMessages.XmlReadingError(ex.Message),
+                    ErrorType = XmlErrorType.SYNTAX,
+                    ErrorCode = 1,
+                    ErrorGravity = XmlErrorGravity.ERROR
+                });
+
+                return false;
+            }
             catch (Exception ex)
             {
                 this.Errors.Add(new XmlError()
@@ -123,7 +139,7 @@ namespace XmlValidation
                     Line = 0,
                     Column = 0,
                     Message = DiagnosticMessages.XmlReadingError(ex.Message),
-                    ErrorType = XmlErrorType.SEMANTIC,
+                    ErrorType = XmlErrorType.SYNTAX,
                     ErrorCode = 2,
                     ErrorGravity = XmlErrorGravity.ERROR
                 });
